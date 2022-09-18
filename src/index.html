@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="description" content="sneakers ecommerce product page">
+    <meta name="keywords" content="sneakers, ecommerce, product page">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./index.scss">
+    <script src="./index.ts" type="module"></script>
+    <title>Sneakers | Product page</title>
+  </head>
+
+  <body>
+    <header id="header">
+      <picture class="header__logo">
+        <img src="./assets/images/logo.svg" alt="brand-name">
+      </picture>
+      <nav class="header__nav">
+        <a href="#"><span>Collections</span></a>
+        <a href="#"><span>Men</span></a>
+        <a href="#"><span>Women</span></a>
+        <a href="#"><span>About</span></a>
+        <a href="#"><span>Contact</span></a>
+      </nav>
+      <div class="header__right">
+        <button id="header-cart-button" data-quantity-in-cart="0" class="header__cart">
+          <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+              fill="currentColor" fill-rule="nonzero" />
+          </svg>
+        </button>
+        <picture>
+          <img src="./assets/images/image-avatar.png" alt="user-avatar">
+        </picture>
+      </div>
+      <section id="cart-box" class="cart-box cart-box--is-empty">
+        <h4>Cart</h4>
+        <div class="cart-content">
+          <ul class="cart__items">
+            <li class="cart-item">
+              <picture class="cart-item-thumbnail">
+                <img src="./assets/images/image-product-1-thumbnail.jpg" alt="cart-item">
+              </picture>
+              <div class="cart-item-text">
+                <p class="cart-item-name">Fall Limited Edition Sneakers</p>
+                <p id="cart-item-amount" class="cart-item-amount"><span id="cart-item-calc"
+                    class="cart-item-calc"></span><span id="cart-item-total" class="cart-item-total"></span></p>
+              </div>
+              <button id="remove-from-cart" class="cart-item-delete" type="button">
+                <img src="./assets/images/icon-delete.svg" alt="remove-item">
+              </button>
+            </li>
+          </ul>
+          <button id="checkout-button" class="checkout" type="button">Checkout</button>
+          <p class="cart--is-empty">Your cart is empty.</p>
+        </div>
+      </section>
+    </header>
+    <main>
+      <div class="gallery">
+        <picture class="gallery__selected">
+          <img src="./assets/images/image-product-1.jpg" alt="active">
+        </picture>
+        <div class="thumbnails">
+          <picture class="thumbnails__thumbnail1 thumbnails__thumbnail--active">
+            <img src="./assets/images/image-product-1-thumbnail.jpg" alt="thumbnail-1">
+          </picture>
+          <picture class="thumbnails__thumbnail2">
+            <img src="./assets/images/image-product-2-thumbnail.jpg" alt="thumbnail-2">
+          </picture>
+          <picture class="thumbnails__thumbnail3">
+            <img src="./assets/images/image-product-3-thumbnail.jpg" alt="thumbnail-3">
+          </picture>
+          <picture class="thumbnails__thumbnail4">
+            <img src="./assets/images/image-product-4-thumbnail.jpg" alt="thumbnail-4">
+          </picture>
+        </div>
+      </div>
+      <section class="item-description">
+        <h1>Sneaker Company</h1>
+        <h2>Fall Limited Edition Sneakers</h2>
+        <p class="item-description__description">These low-profile sneakers are your perfect casual wear companion.
+          Featuring a
+          durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+        <p class="item-description__price"><span>$125.00</span><span class="item-description__promo">50%</span></p>
+        <small class="item-description__old-price">$250.00</small>
+        <div class="add-to-cart">
+          <div class="add-to-cart__control">
+            <button id="reduce-quantity" class="add-to-cart__reduce" type="button">
+              <figure>
+                <svg width="12" height="4" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                    <path
+                      d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z"
+                      id="a" />
+                  </defs>
+                  <use fill="currentColor" fill-rule="nonzero" xlink:href="#a" />
+                </svg>
+              </figure>
+            </button>
+            <span id="quantity-to-add" class="add-to-cart__quantity">0</span>
+            <button id="increase-quantity" class="add-to-cart__increase" type="button">
+              <figure>
+                <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <defs>
+                    <path
+                      d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z"
+                      id="b" />
+                  </defs>
+                  <use fill="currentColor" fill-rule="nonzero" xlink:href="#b" />
+                </svg>
+              </figure>
+            </button>
+          </div>
+          <button id="add-to-cart" type="button" class="add-to-cart__button">
+            <figure>
+              <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+                  fill="currentColor" fill-rule="nonzero" />
+              </svg>
+            </figure>
+            <span>Add to cart</span>
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
+
+</html>

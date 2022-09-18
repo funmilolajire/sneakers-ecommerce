@@ -1,0 +1,27 @@
+{
+  "name": "sneakers-ecommerce-product-page",
+  "version": "1.0.0",
+  "description": "frontend mentor challenge",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funmilolajire/sneakers-ecommerce.git"
+  },
+  "author": "Feo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funmilolajire/sneakers-ecommerce/issues"
+  },
+  "homepage": "https://github.com/funmilolajire/sneakers-ecommerce#readme",
+  "dependencies": {
+    "parcel": "^2.7.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0"
+  }
+}
