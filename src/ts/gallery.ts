@@ -1,37 +1,68 @@
-const selectedImage = document.getElementById("selected-image") as HTMLImageElement
-const thumbnail1 = document.getElementById("thumbnail1")
-const thumbnail2 = document.getElementById("thumbnail2")
-const thumbnail3 = document.getElementById("thumbnail3")
-const thumbnail4 = document.getElementById("thumbnail4")
-const image1 = new URL('../assets/images/image-product-1.jpg', import.meta.url)
-const image2 = new URL('../assets/images/image-product-2.jpg', import.meta.url)
-const image3 = new URL('../assets/images/image-product-3.jpg', import.meta.url)
-const image4 = new URL('../assets/images/image-product-4.jpg', import.meta.url)
+import { openLightbox } from "./lightbox"
+import { active, images, thumbnails } from "./thumbnails-images"
 
-const thumbnails = [thumbnail1, thumbnail2, thumbnail3, thumbnail4]
-const images = [image1,image2,image3,image4]
+export const gSelectedImage = document.getElementById("selected-image") as HTMLImageElement
+export let gActiveThumbnail = thumbnails[active.thumbnailIndex];
 
-const changeActiveImage = (givenThumbnail: HTMLElement) => {
+const changeActiveImage = (givenThumbnail: HTMLElement|null) => {
     thumbnails.forEach((thumbnail,index) => {
         if (thumbnail === givenThumbnail) {
+            gActiveThumbnail = thumbnail
+            active.thumbnailIndex=index
             thumbnail?.classList.add("thumbnails__thumbnail--active")
-            const image = images[index]
-            selectedImage.src = image.toString()
+            const image = images[active.thumbnailIndex]
+            gSelectedImage.src = image.toString()
         } else {
             thumbnail?.classList.remove("thumbnails__thumbnail--active")            
         }
     })
 }
 
-thumbnail1?.addEventListener('click', () => {
-    changeActiveImage(thumbnail1)
+thumbnails[0]?.addEventListener('click', () => {
+    changeActiveImage(thumbnails[0])
 })
-thumbnail2?.addEventListener('click', () => {
-    changeActiveImage(thumbnail2)
+thumbnails[1]?.addEventListener('click', () => {
+    changeActiveImage(thumbnails[1])
 })
-thumbnail3?.addEventListener('click', () => {
-    changeActiveImage(thumbnail3)
+thumbnails[2]?.addEventListener('click', () => {
+    changeActiveImage(thumbnails[2])
 })
-thumbnail4?.addEventListener('click', () => {
-    changeActiveImage(thumbnail4)
+thumbnails[3]?.addEventListener('click', () => {
+    changeActiveImage(thumbnails[3])
 })
+
+export const gMatchLightboxSelected = () => {
+    gActiveThumbnail = thumbnails[active.thumbnailIndex];
+    gSelectedImage.src = images[active.thumbnailIndex].toString()
+    changeActiveImage(gActiveThumbnail)
+}
+
+gSelectedImage.addEventListener('click', () => {
+    window.innerWidth!>750&& openLightbox()
+})
+
+
+const gCarouselNextButton = document.getElementById('g-carousel-next')
+const gCarouselPrevButton = document.getElementById('g-carousel-prev')
+
+const carouselNext = () => {
+    let nextThumbnail:HTMLElement|null;
+    if (active.thumbnailIndex !== (thumbnails.length - 1)) {
+    nextThumbnail = thumbnails[active.thumbnailIndex+1]
+    } else {
+    nextThumbnail = thumbnails[0]
+    }
+    nextThumbnail && changeActiveImage(nextThumbnail)
+}
+gCarouselNextButton?.addEventListener('click', carouselNext)
+
+const carouselPrev = () => {
+    let prevThumbnail:HTMLElement|null;
+    if (active.thumbnailIndex !== 0) {
+        prevThumbnail = thumbnails[active.thumbnailIndex-1]
+    } else {
+        prevThumbnail = thumbnails[thumbnails.length-1]
+    }
+       prevThumbnail&& changeActiveImage(prevThumbnail)
+}
+gCarouselPrevButton?.addEventListener('click', carouselPrev)

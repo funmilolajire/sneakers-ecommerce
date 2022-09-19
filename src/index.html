@@ -16,16 +16,27 @@
 
   <body>
     <header id="header">
+      <button type="button" id="mobile-nav-control" class="mobile-nav-control">
+        <svg class="burger" width="16" height="15" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 12v3H0v-3h16Zm0-6v3H0V6h16Zm0-6v3H0V0h16Z" fill="currentColor" fill-rule="evenodd" /></svg>
+      </button>
       <picture class="header__logo">
         <img src="./assets/images/logo.svg" alt="brand-name">
       </picture>
-      <nav class="header__nav">
+      <nav id="nav" class="header__nav">
+        <button id="mobile-nav-close" class="mobile-nav-close">
+          <svg class="close" width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+              fill="currentColor" fill-rule="evenodd" /></svg>
+        </button>
         <a href="#"><span>Collections</span></a>
         <a href="#"><span>Men</span></a>
         <a href="#"><span>Women</span></a>
         <a href="#"><span>About</span></a>
         <a href="#"><span>Contact</span></a>
       </nav>
+      <div class="mobile-nav-backdrop"></div>
       <div class="header__right">
         <button id="header-cart-button" data-quantity-in-cart="0" class="header__cart">
           <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +74,19 @@
     </header>
     <main>
       <div class="gallery">
-        <picture class="gallery__selected">
+        <div class="carousel-control">
+          <button id="g-carousel-prev" class="carousel-prev" type="button">
+            <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.85718 1.28571L2.14289 6.99999L7.85718 12.7143" stroke="currentColor" stroke-width="3" />
+            </svg>
+          </button>
+          <button id="g-carousel-next" class="carousel-next" type="button">
+            <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.14282 1.28571L6.85711 6.99999L1.14282 12.7143" stroke="currentColor" stroke-width="3" />
+            </svg>
+          </button>
+        </div>
+        <picture id="selected-picture" class="gallery__selected">
           <img id="selected-image" src="./assets/images/image-product-1.jpg" alt="active-thumbnail">
         </picture>
         <div class="thumbnails">
@@ -87,8 +110,10 @@
         <p class="item-description__description">These low-profile sneakers are your perfect casual wear companion.
           Featuring a
           durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-        <p class="item-description__price"><span>$125.00</span><span class="item-description__promo">50%</span></p>
-        <small class="item-description__old-price">$250.00</small>
+        <div class="item-description__price-wrapper">
+          <p class="item-description__price"><span>$125.00</span><span class="item-description__promo">50%</span></p>
+          <small class="item-description__old-price">$250.00</small>
+        </div>
         <div class="add-to-cart">
           <div class="add-to-cart__control">
             <button id="reduce-quantity" class="add-to-cart__reduce" type="button">
@@ -132,26 +157,42 @@
         </div>
       </section>
     </main>
-    <!-- <div class="lightbox">
+    <div id="lightbox" class="lightbox">
       <div class="gallery">
-        <picture class="gallery__selected">
-          <img src="./assets/images/image-product-1.jpg" alt="active">
+        <button id="lightbox-close" class="lightbox-close">
+          <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+              fill="currentColor" fill-rule="evenodd" /></svg>
+        </button>
+        <div class="carousel-control">
+          <button id="l-carousel-prev" class="carousel-prev" type="button">
+            <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 1 3 9l8 8" stroke="currentColor" stroke-width="3" fill="none" fill-rule="evenodd" /></svg>
+          </button>
+          <button id="l-carousel-next" class="carousel-next" type="button">
+            <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+              <path d="m2 1 8 8-8 8" stroke="currentColor" stroke-width="3" fill="none" fill-rule="evenodd" /></svg>
+          </button>
+        </div>
+        <picture id="lightbox-picture" class="gallery__selected">
+          <img id="lightbox-image" src="./assets/images/image-product-1.jpg" alt="active">
         </picture>
         <div class="thumbnails">
-          <picture class="thumbnails__thumbnail1 thumbnails__thumbnail--active">
+          <picture id="lightbox-thumbnail1" class="thumbnails__thumbnail1 thumbnails__thumbnail--active">
             <img src="./assets/images/image-product-1-thumbnail.jpg" alt="thumbnail-1">
           </picture>
-          <picture class="thumbnails__thumbnail2">
+          <picture id="lightbox-thumbnail2" class="thumbnails__thumbnail2">
             <img src="./assets/images/image-product-2-thumbnail.jpg" alt="thumbnail-2">
           </picture>
-          <picture class="thumbnails__thumbnail3">
+          <picture id="lightbox-thumbnail3" class="thumbnails__thumbnail3">
             <img src="./assets/images/image-product-3-thumbnail.jpg" alt="thumbnail-3">
           </picture>
-          <picture class="thumbnails__thumbnail4">
+          <picture id="lightbox-thumbnail4" class="thumbnails__thumbnail4">
             <img src="./assets/images/image-product-4-thumbnail.jpg" alt="thumbnail-4">
           </picture>
         </div>
-      </div> -->
+      </div>
     </div>
   </body>
 

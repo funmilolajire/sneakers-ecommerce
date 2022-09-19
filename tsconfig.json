@@ -9,6 +9,6 @@
         "noImplicitReturns": true,
         "strict": true,
         "module": "ESNext",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
     }
 }

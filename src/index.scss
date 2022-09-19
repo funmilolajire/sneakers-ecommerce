@@ -62,6 +62,9 @@ header {
         background: #E4E9F2;
     }
 
+    .mobile-nav-control {
+        display: none;
+    }
 
     img {
         width: 100%;
@@ -75,6 +78,10 @@ header {
         margin-right: 5.65rem;
     }
 
+    .mobile-nav-backdrop {
+        display: none;
+    }
+
     .header__nav {
         display: flex;
         align-items: center;
@@ -82,6 +89,10 @@ header {
         font-size: 1.5rem;
         line-height: 2.6rem;
         height: 100%;
+
+        .mobile-nav-close {
+            display: none;
+        }
 
         a {
             display: flex;
@@ -313,12 +324,17 @@ main {
         height: 100%;
     }
 
+    .carousel-control {
+        display: none;
+    }
+
     .gallery__selected {
         display: block;
         width: 100%;
         height: 44.5rem;
         overflow: hidden;
         border-radius: 15px;
+        cursor: pointer;
     }
 
     .thumbnails {
@@ -483,6 +499,75 @@ main {
     }
 }
 
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    background: transparentize($color: #000, $amount: 0.25);
+    mix-blend-mode: normal;
+    z-index: 100;
+
+    &.lightbox--is-open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gallery {
+        gap: 0;
+        width: 55rem;
+        position: relative;
+
+        .lightbox-close {
+            color: #fff;
+            margin-left: auto;
+            margin-bottom: 2.4rem;
+            font-size: 2rem;
+            line-height: 2rem;
+
+            &:hover {
+                color: $brand-color;
+            }
+        }
+
+        .carousel-control {
+
+            button {
+                color: $secondary-color;
+                width: 5.6rem;
+                height: 5.6rem;
+                border-radius: 50%;
+                position: absolute;
+                background: #fff;
+                top: 28.1rem;
+
+                &:hover {
+                    color: $brand-color;
+                }
+            }
+
+            .carousel-prev {
+                left: -2.8rem;
+            }
+
+            .carousel-next {
+                right: -2.8rem;
+            }
+        }
+
+        .gallery__selected {
+            height: 55rem;
+        }
+
+        .thumbnails {
+            margin-top: 4rem;
+            justify-content: center;
+        }
+    }
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -490,4 +575,362 @@ main {
 ::-webkit-scrollbar-thumb {
     background: $brand-color;
     border-radius: 4px;
+}
+
+@media all and (max-width:1300px) {
+    header {
+        margin: 0 10rem;
+    }
+
+    main {
+        padding: 9rem 10rem 13.2rem;
+    }
+}
+
+@media all and (max-width:1150px) {
+    header {
+        margin: 0 8rem;
+    }
+
+    main {
+        padding: 9rem 8rem 13.2rem;
+    }
+
+    .gallery,
+    .item-description {
+        width: 40rem;
+    }
+
+    .gallery {
+        .gallery__selected {
+            height: 40rem;
+        }
+
+        .thumbnails {
+            gap: 2rem;
+        }
+    }
+}
+
+@media all and (max-width:1000px) {
+    header {
+        margin: 0 5rem;
+
+        .cart-box {
+            right: -2.6rem;
+        }
+    }
+
+    main {
+        padding: 9rem 5rem;
+        gap: 4rem;
+        justify-content: center;
+    }
+
+    .gallery,
+    .item-description {
+        width: 30rem;
+    }
+
+    .gallery {
+        .gallery__selected {
+            height: 30rem;
+        }
+
+        .thumbnails {
+            gap: 1rem;
+
+            picture {
+                width: 7rem;
+                height: 7rem;
+            }
+        }
+    }
+
+    .item-description {
+        h1 {
+            margin-bottom: 1.8rem;
+        }
+
+        h2 {
+            font-size: 3.6rem;
+            line-height: 4rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .add-to-cart {
+            margin-top: 2.4rem;
+
+            .add-to-cart__control {
+                width: 10rem;
+                height: 4.8rem;
+            }
+
+            .add-to-cart__button {
+                width: 18rem;
+                height: 4.8rem;
+            }
+        }
+    }
+
+    .lightbox {
+        .gallery {
+            width: 40rem;
+
+            .carousel-control {
+                button {
+                    top: 22rem;
+                    width: 4rem;
+                    height: 4rem;
+                }
+
+                .carousel-next {
+                    right: -2rem;
+                }
+
+                .carousel-prev {
+                    left: -2rem;
+                }
+            }
+
+            .gallery__selected {
+                height: 40rem;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 850px) {
+    header {
+        .mobile-nav-control {
+            display: flex;
+            margin-right: 1.6rem;
+            margin-top: 0.4rem;
+
+            &:hover {
+                color: $brand-color;
+            }
+        }
+
+        .header__nav {
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 25rem;
+            background: #fff;
+            z-index: 200;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
+            font-weight: 700;
+            font-size: 1.8rem;
+            line-height: 2.6rem;
+            color: $secondary-color;
+            padding: 9.2rem 2.5rem 3rem;
+            display: none;
+
+
+            &.header__nav--is-open {
+                display: flex;
+
+                ~.mobile-nav-backdrop {
+                    display: block;
+                    position: fixed;
+                    background: transparentize($color: #000, $amount: 0.25);
+                    inset: 0;
+                    z-index: 199;
+                }
+
+            }
+
+            .mobile-nav-close {
+                display: inline-block;
+                position: absolute;
+                top: 2.5rem;
+                color: $primary-color;
+
+                &:hover {
+                    color: $brand-color;
+                }
+            }
+
+            a {
+                height: -webkit-fit-content;
+                height: -moz-fit-content;
+                height: fit-content;
+            }
+        }
+
+        .header__right {
+            gap: 2.2rem;
+
+            picture {
+                width: 3.6rem;
+                height: 3.6rem;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 750px) {
+    header {
+        margin: 0;
+        height: 6.8rem;
+        padding: 1.9rem 0 2.5rem;
+
+        .mobile-nav-control {
+            margin-left: 2.4rem;
+        }
+
+        .header__right {
+            margin-right: 2.4rem;
+
+            picture {
+                width: 2.4rem;
+                height: 2.4rem;
+            }
+        }
+
+        .cart-box {
+            right: 2.3rem;
+            top: 100%;
+        }
+    }
+
+    main {
+        padding: 5rem 5rem 10rem;
+        flex-direction: column;
+    }
+
+    .item-description,
+    .gallery {
+        width: 100%;
+    }
+
+    .gallery {
+        position: relative;
+        justify-content: center;
+
+        .gallery__selected {
+            height: 45rem;
+        }
+
+        .carousel-control {
+            display: contents;
+
+            button {
+                width: 4rem;
+                height: 4rem;
+                background: #fff;
+                border-radius: 50%;
+                position: absolute;
+                margin: auto 0;
+                color: $secondary-color;
+
+                &:hover {
+                    color: $brand-color;
+                }
+            }
+
+            .carousel-prev {
+                left: 1.6rem;
+            }
+
+            .carousel-next {
+                right: 1.6rem;
+            }
+        }
+
+        .thumbnails {
+            display: none;
+        }
+    }
+
+    .lightbox {
+        &.lightbox--is-open {
+            display: none;
+        }
+    }
+}
+
+@media all and (max-width: 550px) {
+    header {
+        .cart-box {
+            top: calc(100% + 8px);
+            left: 8px;
+            right: 7px;
+            width: unset;
+
+            .cart-item-delete {
+                flex-shrink: 0;
+                margin-left: auto;
+            }
+        }
+    }
+
+    main {
+        padding: 0;
+        gap: 0;
+    }
+
+    .gallery {
+        .gallery__selected {
+            height: 30rem;
+            border-radius: 0;
+        }
+    }
+
+    .item-description {
+        padding: 2.4rem 2.4rem 8.8rem;
+
+        h1 {
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+            letter-spacing: 1.84615px;
+            margin-bottom: 1.9rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            line-height: 3.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .item-description__description {
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+
+        .item-description__price-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            .item-description__price {
+                margin-bottom: 0;
+            }
+        }
+
+        .add-to-cart {
+            flex-direction: column;
+            gap: 1.6rem;
+
+            .add-to-cart__control {
+                width: 100%;
+                height: 5.6rem;
+
+                button {
+                    width: 2.4rem;
+                }
+            }
+
+            .add-to-cart__button {
+                width: 100%;
+                height: 5.6rem;
+            }
+        }
+    }
 }
