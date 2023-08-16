@@ -577,6 +577,13 @@ main {
     border-radius: 4px;
 }
 
+@media all and (min-width:1500px){
+    main{
+        justify-content: flex-start;
+        gap: 20rem;
+    }
+}
+
 @media all and (max-width:1300px) {
     header {
         margin: 0 10rem;
